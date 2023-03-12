@@ -1,6 +1,7 @@
 import { Request, Response, Router } from 'express';
 import auth from './auth.route';
 import user from './user.route';
+import post from './post.route';
 
 const router = Router();
 
@@ -9,6 +10,8 @@ router.get('/healthcheck', (req: Request, res: Response) => {
 });
 
 router.use('/auth', auth);
+
+router.use('/posts', post);
 
 router.use('/users', user);
 

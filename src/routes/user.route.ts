@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { getUserPosts } from '../controllers/post.controller';
 import {
   deleteUser,
   getAllUsers,
@@ -14,6 +15,8 @@ const router = Router();
 router.get('/', getAllUsers);
 
 router.get('/:id', getSingleUser);
+
+router.get('/:id/posts', getUserPosts);
 
 router.patch('/update', isAuth, validate(updateSchema), updateUser);
 
