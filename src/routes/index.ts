@@ -9,6 +9,10 @@ router.get('/healthcheck', (req: Request, res: Response) => {
   res.status(200).json({ message: 'Server ok' });
 });
 
+router.get('/docs', (req: Request, res: Response) => {
+  res.redirect('https://documenter.getpostman.com/view/26151840/2s93JtQixJ');
+});
+
 router.use('/auth', auth);
 
 router.use('/posts', post);
