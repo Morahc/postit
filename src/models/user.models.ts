@@ -17,12 +17,10 @@ const userSchema = new Schema<IUser, UserModel, IUserMethods>(
     handle: {
       type: String,
       required: [true, 'Handle field is required'],
-      unique: true,
     },
     email: {
       type: String,
       required: [true, 'Email field is required'],
-      unique: true,
     },
     password: {
       type: String,

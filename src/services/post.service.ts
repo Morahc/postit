@@ -4,9 +4,9 @@ import { IPost } from '../interface/post.interface';
 import Post from '../models/post.models';
 
 export const GetPosts = async (filter?: FilterQuery<any>) => {
-  return await Post.find({ ...filter }, '-__v -isDeleted -comments -body', {
-    sort: 'asc',
-  });
+  return await Post.find({ ...filter }, '-__v -isDeleted -comments -body').sort(
+    { createdAt: 'desc' },
+  );
 };
 
 export const GetPost = async (_id: string) => {
