@@ -12,8 +12,7 @@ const errorHandler = (
   const message = err.message || 'Something went wrong!';
   return res.status(status).json({
     message,
-    success: false,
-    stack: process.env.NODE_ENV === 'production' ? null : err.stack,
+    success: false
   });
 };
 
