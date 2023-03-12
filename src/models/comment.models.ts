@@ -29,10 +29,9 @@ export const commentSchema = new Schema<IComment, CommentModel>(
   },
 );
 
-commentSchema.pre('find', function() {
+commentSchema.pre('find', function () {
   this.where({ isDeleted: false });
 });
-
 
 const Comment = model<IComment, CommentModel>('Comment', commentSchema);
 

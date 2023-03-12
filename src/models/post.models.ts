@@ -32,7 +32,7 @@ export const postSchema = new Schema<IPost, PostModel>(
   },
 );
 
-postSchema.pre('find', function() {
+postSchema.pre('find', function () {
   this.where({ isDeleted: false });
 });
 

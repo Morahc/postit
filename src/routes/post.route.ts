@@ -34,12 +34,7 @@ router.get('/:postId/comments', getAllComments);
 
 router.get('/:postId/comments/:commentId', getSingleComment);
 
-router.post(
-  '/:postId/comments',
-  validate(schema),
-  isAuth,
-  createComment,
-);
+router.post('/:postId/comments', validate(schema), isAuth, createComment);
 
 router.patch(
   '/:postId/comments/:commentId',
