@@ -21,7 +21,7 @@ export const GetUser = async (filter: FilterQuery<IUser>) => {
 export const Login = async (input: Pick<IUser, 'email' | 'password'>) => {
   const { email, password } = input;
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email, isDeleted: false });
   if (!user) throw new HttpException(404, `User with email ${email} not found`);
 
   if (!user.matchPassword(password)) {
@@ -31,12 +31,16 @@ export const Login = async (input: Pick<IUser, 'email' | 'password'>) => {
 };
 
 export const CreateUser = async (input: IUser) => {
-  const { email } = input;
+  const { email, handle } = input;
 
   const userExists = await User.findOne({ email });
 
-  if (userExists) {
+  if (userExists && !userExists?.isDeleted) {
     throw new HttpException(400, `User with email ${email} already exists`);
+  }
+
+  if (userExists?.handle == handle && !userExists?.isDeleted) {
+    throw new HttpException(400, `User with handle ${handle} already exists`);
   }
 
   return await User.create(input);
