@@ -26,6 +26,8 @@ to a post (post-it).
 - Run `yarn dev` to run in development mode.
 
 - Run `yarn build` to build for production.
+  
+- **[Live URL](https://learnable-standard-test.onrender.com/api/v1/docs)**
 
 ## Data Schema
 
